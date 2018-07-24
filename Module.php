@@ -79,16 +79,16 @@ class Module extends \Aurora\System\Module\AbstractModule
 				$vmail_dbuser = $this->getConfig('DbUser','');
 				$vmail_dbpass = $this->getConfig('DbPass','');
 
-				$mysqli = new mysqli($vmail_host, $vmail_dbuser, $vmail_dbpass, $vmail_name);
+				$mysqli = mysqli_connect($vmail_host, $vmail_dbuser, $vmail_dbpass, $vmail_name);
 				if ($mysqli)
 				{
-					$newPassword = $mysqli->real_escape_string($oAccount->IncomingLogin);
+					$newPassword = mysqli_real_escape_string($mysqli, $oAccount->IncomingLogin);
 					$sql = "UPDATE users SET password='".$sPassword."' WHERE email='".$newPassword."'";
-					$bResult = $mysqli->query($sql);
+					$bResult = mysqli_query($mysqli, $sql);
 					if (!$bResult) {
 						throw new \Aurora\System\Exceptions\ApiException(\Aurora\System\Exceptions\Errs::UserManager_AccountNewPasswordUpdateError);
 					}
-					$mysqli->close();
+					mysqli_close($mysqli);
 				} else {
 					throw new \Aurora\System\Exceptions\ApiException(\Aurora\System\Exceptions\Errs::UserManager_AccountNewPasswordUpdateError);
 				}
