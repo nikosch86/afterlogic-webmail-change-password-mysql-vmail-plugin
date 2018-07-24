@@ -1,5 +1,8 @@
 {
     "name": "nikosch86/afterlogic-webmail-change-password-mysql-vmail-plugin",
     "type": "aurora-module",
-    "require": {}
+    "require": {},
+    "extra": {
+      "installer-name": "MailChangePasswordMysqlVmailPlugin"
+    }
 }
