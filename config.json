@@ -1,0 +1,26 @@
+{
+	"Disabled": [
+		false,
+		"bool"
+	],
+	"SupportedServers": [
+		["*"],
+		"array"
+	],
+	"DbHost": [
+		"localhost",
+		"string"
+	],
+	"DbName": [
+		"email",
+		"string"
+	],
+	"DbUser": [
+		"email_admin",
+		"string"
+	],
+	"DbPass": [
+		"",
+		"string"
+	]
+}
